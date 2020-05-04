@@ -8,7 +8,7 @@ module.exports = (dbPoolInstance) => {
 
     let getAllData = (callback) => {
         let query =
-            "SELECT experience.*, users.* FROM experience INNER JOIN users ON(users.id = experience.user_id)";
+            "SELECT experience.*, users.* FROM experience INNER JOIN users ON(users.id = experience.user_id) ORDER BY experience.id DESC";
 
         dbPoolInstance.query(query, (error, queryResult) => {
             if (error) {

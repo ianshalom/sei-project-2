@@ -4,12 +4,20 @@ class Home extends React.Component {
     render() {
         let name = this.props.name;
         let testimonies = this.props.testimonyResult || [];
-        console.log(testimonies);
         let displayNavbar;
         let posts = this.props.result || [];
         let currentUserId = parseInt(this.props.id) || "";
         let profileLink = "/profile/" + currentUserId || "";
 
+        //--------------- Display Testimonies ----------------------------------
+        let displayTestimonies = testimonies.map((test) => {
+            return (
+                <div className="testimony-box">
+                    <h3 className="testimony-content">{test.testimony}</h3>
+                    <p className="testimony-name">{test.name}</p>
+                </div>
+            );
+        });
         //--------------- Display Post Container ----------------------------------
         let post = posts.map((post) => {
             let link = "/profile/" + post.user_id;
@@ -24,7 +32,9 @@ class Home extends React.Component {
                                 src={post.profile_img}
                             />
                             <p className="mini-name">
-                                <a href={link}>{post.name}</a>
+                                <a className="name-of-user" href={link}>
+                                    {post.name}
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -54,11 +64,13 @@ class Home extends React.Component {
                                 method="POST"
                                 action="/logout/?_method=delete"
                             >
-                                <input
-                                    type="submit"
-                                    className="logout-button"
-                                    value="Logout"
-                                />
+                                <a href="#">
+                                    <input
+                                        type="submit"
+                                        className="logout-button"
+                                        value="Logout"
+                                    />
+                                </a>
                             </form>
                         </li>
                     </ul>
@@ -82,21 +94,27 @@ class Home extends React.Component {
             );
         }
 
-        //--------------- Display Testimonies ----------------------------------
-        let displayTestimonies = testimonies.map((test) => {
-            return (
-                <div>
-                    <h3 className="testimony-content">{test.testimony}</h3>
-                    <p className="testimony-name">{test.name}</p>
-                </div>
-            );
-        });
+        // font-family: 'Source Sans Pro', sans-serif;
+        // font-family: 'Open Sans Condensed', sans-serif;
+        // font-family: 'Barlow Condensed', sans-serif;
 
         return (
             <html>
                 <head>
                     <title></title>
                     <link rel="stylesheet" href="/style.css" />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap"
+                        rel="stylesheet"
+                    />
                 </head>
                 <body>
                     <div className="home-container">
@@ -105,12 +123,12 @@ class Home extends React.Component {
                         {displayNavbar}
 
                         <div className="background-image-container">
-                            <h1 className="greet-user">WELCOME {name}!</h1>
+                            <h1 className="greet-user">Welcome {name}!</h1>
                         </div>
 
                         <div className="bottom-container">
                             <div id="posts" className="posts">
-                                <h1>Posts</h1> <hr></hr>
+                                <h1 className="post-title">Posts</h1> <hr></hr>
                                 {post}
                             </div>
                             <div className="testimonies">

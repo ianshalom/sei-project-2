@@ -21,13 +21,54 @@ body {
 }
 
 .header {
-	font-size: 40px;
+	font-size: 50px;
+	font-family: "Open Sans Condensed", sans-serif;
+	font-weight: 400;
 }
 
 .nav-item a {
-	padding-right: 30px;
+	padding-right: 150px;
 	font-size: 20px;
 	text-decoration: none;
+	font-family: "Open Sans Condensed", sans-serif;
+	color: grey;
+}
+
+.nav-item a:hover {
+	cursor: pointer;
+	color: #30475e;
+}
+
+.logout-button:hover {
+	cursor: pointer;
+	color: #30475e;
+}
+.logout-button {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font-size: 20px;
+	text-decoration: none;
+	font-family: "Open Sans Condensed", sans-serif;
+	color: grey;
+}
+
+.greet-user {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-transform: capitalize;
+	font-size: 50px;
+	font-family: "Source Sans Pro", sans-serif;
+}
+
+.post-title {
+	font-size: 30px;
+	text-align: left;
+	padding: 10px;
+	font-family: "Source Sans Pro", sans-serif;
 }
 
 .background-image-container {
@@ -69,6 +110,9 @@ body {
 	overflow-y: scroll;
 }
 
+.posts::-webkit-scrollbar {
+	width: 0 !important;
+}
 .post-container {
 	display: flex;
 	justify-content: space-between;
@@ -76,7 +120,25 @@ body {
 	margin-bottom: 30px;
 	height: 250px;
 	border-radius: 25px;
-	background-color: blue;
+}
+
+.country {
+	font-size: 25px;
+	padding-left: 5px;
+	font-family: "Barlow Condensed", sans-serif;
+}
+
+.description {
+	font-size: 20px;
+	overflow-y: hidden;
+	display: block;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	padding: 5px;
+	font-family: "Open Sans Condensed", sans-serif;
+	letter-spacing: 1px;
 }
 
 .description-text {
@@ -86,11 +148,32 @@ body {
 	text-align: left;
 }
 
+.mini-name {
+	margin-top: 10px;
+}
+
+.mini-name a {
+	text-decoration: none;
+	font-size: 20px;
+	text-transform: capitalize;
+	font-style: italic;
+	padding: 5px;
+	font-family: "Barlow Condensed", sans-serif;
+	color: black;
+}
+
+img.profile-img-sm:hover,
+a.name-of-user:hover {
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
 img.profile-img-sm {
 	height: 40px;
 	width: 40px;
-	border-radius: 100px;
+	border-radius: 100%;
 	margin-right: 20px;
+	padding-left: 5px;
 }
 
 .image-container img {
@@ -109,8 +192,35 @@ img.profile-img-sm {
 	color: white;
 	width: 30%;
 	height: 550px;
-	margin-top: 80px;
+	margin-top: 90px;
 	border-radius: 25px;
+	position: sticky;
+	text-align: left;
+	padding: 20px;
+	display: block;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+}
+
+.testimony-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.testimony-content {
+	font-size: 30px;
+	font-family: "Barlow Condensed", sans-serif;
+}
+
+.testimony-name {
+	color: orange;
+	font-size: 18px;
+	text-transform: capitalize;
+	font-style: italic;
+	font-family: "Open Sans Condensed", sans-serif;
 }
 
 /* ++++++++++++++++++++ Sign Up +++++++++++++++++++++++++*/
@@ -132,6 +242,7 @@ img.profile-img-sm {
 	text-align: center;
 	border-radius: 20px;
 	opacity: 0.96;
+	font-family: "Barlow Condensed", sans-serif;
 }
 
 .signup-box input[type="text"],
@@ -164,6 +275,7 @@ img.profile-img-sm {
 	border-radius: 24px;
 	transition: 0.25s;
 	cursor: pointer;
+	font-family: "Barlow Condensed", sans-serif;
 }
 
 .signup-box input[type="file"] {
@@ -209,6 +321,7 @@ img.profile-img-sm {
 	text-align: center;
 	border-radius: 20px;
 	opacity: 0.96;
+	font-family: "Barlow Condensed", sans-serif;
 }
 
 .login-box h1 {
@@ -278,6 +391,7 @@ img.profile-img-sm {
 	text-align: center;
 	border-radius: 20px;
 	opacity: 0.96;
+	font-family: "Barlow Condensed", sans-serif;
 }
 
 .experiences-box h1 {
@@ -367,20 +481,26 @@ img.profile-img-sm {
 }
 
 .profile-data {
-	background-color: blue;
+	background-color: #85a392;
 	width: 35%;
 	text-align: center;
+	border-radius: 25px 0 0 25px;
+	opacity: 0.95;
 }
 
 .user-post {
-	background-color: red;
+	background-color: #f0f0f0;
 	width: 65%;
+	border-radius: 0 25px 25px 0;
+	opacity: 0.9;
+	overflow: hidden;
+	overflow-y: scroll;
 }
 
 img.profile-picture {
 	height: 350px;
-	width: 70%;
-	margin-top: 40px;
+	width: 60%;
+	margin-top: 100px;
 	border-radius: 25px;
 }
 
@@ -389,10 +509,70 @@ img.profile-picture {
 	padding: 30px;
 }
 
+.profile-post {
+	display: flex;
+	text-align: center;
+	justify-content: space-between;
+	margin: 30px;
+	font-family: "Source Sans Pro", sans-serif;
+	text-align: left;
+}
+
+.profile-post .visited-country {
+	padding: 20px auto;
+}
+
+.profile-text-container {
+	padding-top: 20px;
+	padding-left: 50px;
+	display: block;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+}
+
+.profile-text-container .travel-description {
+	font-size: 18px;
+}
+
+.profile-text-container .visited-country {
+	text-align: left;
+	font-size: 30px;
+}
+
 .travel-img {
-	height: 300px;
-	width: 400px;
+	height: 270px;
+	width: 300px;
 	border-radius: 25px;
+}
+
+.profile-name {
+	font-size: 40px;
+	text-transform: capitalize;
+	font-family: "Barlow Condensed", sans-serif;
+}
+
+input.followed-posts-button,
+input.follow-button {
+	background: none;
+	border: none;
+	font-size: 20px;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 15px 40px;
+	display: inline-block;
+	border-radius: 100px;
+	transition: all 0.2s;
+	position: relative;
+	background-color: white;
+	color: #777;
+}
+input.followed-posts-button:hover,
+input.follow-button:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 }
 
 /* ++++++++++++++++++++ Followed POSTS +++++++++++++++++++++++++*/

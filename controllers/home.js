@@ -23,6 +23,7 @@ module.exports = (db) => {
                 }
 
                 data["result"] = result;
+                data["testimonyResult"] = testimonyResult;
 
                 if (req.cookies && req.cookies.loggedIn) {
                     const loggedIn = req.cookies.loggedIn;

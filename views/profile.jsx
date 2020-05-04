@@ -3,26 +3,33 @@ var React = require("react");
 class Profile extends React.Component {
     render() {
         let profileData = this.props.result || [];
-
         let userPost;
         let currentIdUser = parseInt(this.props.idOfCurrentUser);
         console.log(currentIdUser);
         let followStatus = this.props.followStatus;
-
         let profileDataContainer;
         let displayFollowButton;
 
-        profileData.map((data) => {
-            userPost = (
-                <div className="user-post">
-                    <div className="profile-content">
-                        <h2 className="visited-country">{data.country}</h2>
-                        <p className="travel-description">{data.experience}</p>
-                        <img className="travel-img" src={data.img} />
+        let profileDataInfo = profileData[0];
+        const resultArr = this.props.result;
+
+        const profileInfo = resultArr.map((result) => {
+            return (
+                <div className="profile-post">
+                    <div className="profile-text-container">
+                        <h2 className="visited-country">{result.country}</h2>
+                        <p className="travel-description">
+                            {result.experience}
+                        </p>
                     </div>
-                    <div className="comments-box"></div>
+                    <div className="profile-image-container">
+                        <img className="travel-img" src={result.img} />
+                    </div>
                 </div>
             );
+        });
+
+        profileData.map((data) => {
             //CHECKING TO SEE IF CURRENT USER IS LOOKING AT OWN PROFILE TO REMOVE FOLLOW BUTTON
             if (currentIdUser === data.user_id) {
                 displayFollowButton = (
@@ -106,16 +113,60 @@ class Profile extends React.Component {
             }
         });
 
+        // font-family: 'Source Sans Pro', sans-serif;
+        // font-family: 'Open Sans Condensed', sans-serif;
+        // font-family: 'Barlow Condensed', sans-serif;
+
         return (
             <html>
                 <head>
                     <title></title>
                     <link rel="stylesheet" href="/style.css" />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap"
+                        rel="stylesheet"
+                    />
                 </head>
                 <body className="profile-page">
+                    <div className="nav-container">
+                        <ul className="navbar">
+                            <li className="nav-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="/experiencesform">Post Something</a>
+                            </li>
+                            <li className="nav-item">
+                                <form
+                                    method="POST"
+                                    action="/logout/?_method=delete"
+                                >
+                                    <a href="#">
+                                        <input
+                                            type="submit"
+                                            className="logout-button"
+                                            value="Logout"
+                                        />
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                     <div className="profile-container">
                         {profileDataContainer}
-                        {userPost}
+                        <div className="user-post">
+                            <div className="profile-content">
+                                {profileInfo}{" "}
+                            </div>
+                        </div>
                     </div>
 
                     <script src="/script.js"></script>
