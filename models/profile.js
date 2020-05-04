@@ -88,7 +88,7 @@ module.exports = (dbPoolInstance) => {
 
     const viewFollowedPosts = (id, callback) => {
         const query =
-            "SELECT users.name, users.profile_img, experience.country, experience.experience, experience.testimony, experience.img FROM users INNER JOIN experience ON(users.id = experience.user_id) INNER JOIN follow ON(followed_id = experience.user_id) WHERE follow.following_user_id = ($1)";
+            "SELECT users.name, users.profile_img, users.id, experience.country, experience.experience, experience.testimony, experience.img FROM users INNER JOIN experience ON(users.id = experience.user_id) INNER JOIN follow ON(followed_id = experience.user_id) WHERE follow.following_user_id = ($1)";
         const values = [id.currentId];
         dbPoolInstance.query(query, values, (error, queryResult) => {
             if (error) {

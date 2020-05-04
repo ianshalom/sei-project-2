@@ -11,7 +11,7 @@ class Profile extends React.Component {
         let displayFollowButton;
 
         let profileDataInfo = profileData[0];
-        const resultArr = this.props.result;
+        const resultArr = this.props.result || [];
 
         const profileInfo = resultArr.map((result) => {
             return (
@@ -138,13 +138,13 @@ class Profile extends React.Component {
                 <body className="profile-page">
                     <div className="nav-container">
                         <ul className="navbar">
-                            <li className="nav-item">
+                            <li className="nav-item white">
                                 <a href="/">Home</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item white">
                                 <a href="/experiencesform">Post Something</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item white">
                                 <form
                                     method="POST"
                                     action="/logout/?_method=delete"
@@ -152,7 +152,7 @@ class Profile extends React.Component {
                                     <a href="#">
                                         <input
                                             type="submit"
-                                            className="logout-button"
+                                            className="logout-button white"
                                             value="Logout"
                                         />
                                     </a>
@@ -168,6 +168,9 @@ class Profile extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <span className="credits">
+                        Photo by Arnaud STECKLE on Unsplash
+                    </span>
 
                     <script src="/script.js"></script>
                 </body>

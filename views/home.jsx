@@ -124,6 +124,10 @@ class Home extends React.Component {
 
                         <div className="background-image-container">
                             <h1 className="greet-user">Welcome {name}!</h1>
+                            <h3 className="slogan">Discover through others</h3>
+                            <span className="credits">
+                                Photo by Arnaud STECKLE on Unsplash
+                            </span>
                         </div>
 
                         <div className="bottom-container">

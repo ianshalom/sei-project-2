@@ -1,69 +1,18 @@
-# Tweedr!!!
+#Vicarious Adventures
+Travel inspired app looking to give people the opportunity to share and also find their next travel holiday destination.
 
-Let's make a cool new app called TWEEDR!! Not Twitter, geez...
+#MVP
 
-### Wireframe!
+- Managed to implement login/signup/logout with cookies.
+- Used multer and cloudinary to upload images.
+- Able to make nested/multiple queries to the database that displays content
+- Implemented quite a bit of flexbox for css.
 
-![tweedr](https://git.generalassemb.ly/wdi-nyc-goat/LAB_Tweedr/raw/master/assets/tweedr.png)
+#Issues
 
-### Description
-If a user goes to the root route `/` they see all the tweets.
+- Could not successfully implement comment box as whenever a user types something into another users' post, the number of posts that user has in total will be the number of times the comment will display despite only making 1 comment.
+- Had my homepage initially depend on data from the db to start up which could cause future problems if db had no data.
+- Still some issues with css alignments
+- Could add an animated timer whenever a user makes an upload as it takes approximately 3 seconds to upload an image.
 
-Users can register and/or login in order to create a tweet.
-
-#### Getting Started
-Create each part of your app step by step.
-
-1. Create a tables.sql for your app. Don't worry too much about making it complete, since with a seed.sql file you can update your db easily.
-     - The basic tables.sql will have a users table and a tweets table.
-     - The app provides a basic user creation, so the basic app doesn't need anything more for users.
-
-2. Implement login of the user.
-
-3. Create the ability to make a tweet.
-
-4. Change the root route to display all tweets.
-
-
-#### Further
-Users can follow other users.
-
-#### Further
-Users can see just the tweets of the users that they follow.
-
-#### Further
-Users can see just the tweets of the users that follow them.
-
-#### Further
-Create user profile pages. `/users/1`
-
-#### Further
-Each reference on a page should be a link to that thing - (each tweet should link to a single tweet, each user should link to their profile, etc.)
-
-#### Further
-Validate that the user trying to register is using a name unique to the system.
-
-#### Further
-Make sure that users cannot "follow" people more than once.
-
-#### Further
-Add a new column to the db that tracks the time that the tweet was created.
-
-#### Further
-Add sort by date to each kind of tweet feed you made.
-
-#### Further
-Add the ability to edit a tweet.
-
-
-#### Further
-Add the ability to delete things.
-
-#### Further
-Add bootstrap to your app.
-
-#### Further
-Add the ability to add a profile picture - see `input` `type=file` and `form` `enctype=multipart/formdata`
-
-#### Further
-Add the ability to tweet photos, also using the same profile pic upload as above.
+Ian Foo.

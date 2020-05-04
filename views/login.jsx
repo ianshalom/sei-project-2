@@ -8,29 +8,24 @@ class Login extends React.Component {
                 <head>
                     <title></title>
                     <link rel="stylesheet" href="/style.css" />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap"
+                        rel="stylesheet"
+                    />
                 </head>
                 <body className="login-page">
                     <div className="nav-container">
                         <ul className="navbar">
-                            <li className="nav-item">
+                            <li className="nav-item white">
                                 <a href="/">Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="/experiencesform">Post Something</a>
-                            </li>
-                            <li className="nav-item">
-                                <form
-                                    method="POST"
-                                    action="/logout/?_method=delete"
-                                >
-                                    <a href="#">
-                                        <input
-                                            type="submit"
-                                            className="logout-button"
-                                            value="Logout"
-                                        />
-                                    </a>
-                                </form>
                             </li>
                         </ul>
                     </div>
@@ -48,6 +43,9 @@ class Login extends React.Component {
                         />
                         <input type="submit" value="Login" />
                     </form>
+                    <span className="credits">
+                        Photo by André Filipe on Unsplash
+                    </span>
                 </body>
             </html>
         );
