@@ -7,7 +7,9 @@ module.exports = (db) => {
 
     let profilePage = (req, res) => {
         let data = {};
-        let queryId = req.params.id;
+        let queryId = parseInt(req.params.id);
+        let followStatus;
+
         db.profile.getProfileData(queryId, (error, result) => {
             if (error) {
                 console.log("ERRRRROR AT QUERY FOR PROFILE DATA");
@@ -20,36 +22,89 @@ module.exports = (db) => {
                 return;
             }
             let idOfCurrentUser = req.cookies.user_id;
-            data = {
-                result,
+            let profilePageId = result[0].user_id;
+
+            db.profile.checkFollowers(
                 idOfCurrentUser,
-            };
-            console.log(data);
-            res.render("profile", data);
+                profilePageId,
+                (error, followResult) => {
+                    if (error) {
+                        console.log("ERRRRROR AT QUERY FOR PROFILE DATA");
+                        console.log(error);
+                        return;
+                    }
+                    console.log(followResult);
+                    console.log("RESULT OF WHO FOLLOWS WHO");
+                    if (followResult != null) {
+                        followStatus = "Unfollow";
+                    } else {
+                        followStatus = "Follow";
+                    }
+                    data = {
+                        result,
+                        idOfCurrentUser,
+                        followStatus,
+                    };
+                    console.log(data);
+                    console.log("----------data-----------");
+                    res.render("profile", data);
+                }
+            );
         });
     };
 
     const followUser = (req, res) => {
-        let profileIdLink = parseInt(req.body.following);
-        console.log(profileIdLink);
-        let link = "/profile/" + profileIdLink;
+        console.log(req.body);
+        let id = parseInt(req.body.followed);
+        let link = "/profile/" + id;
         console.log(link);
-        db.profile.insertFollow(req.body, (error, result) => {
+
+        if (req.body.followStatus === "Unfollow") {
+            db.profile.stopFollowing(req.body, (error, result) => {
+                if (error) {
+                    console.log("ERRRRROR with deleting follower");
+                    console.log(error);
+                    return;
+                }
+                console.log("UNFOLLOWED");
+                res.redirect(link);
+            });
+        } else {
+            db.profile.insertFollow(req.body, (error, result) => {
+                if (error) {
+                    console.log("ERRRRROR AT QUERY FOR PROFILE DATA");
+                    console.log(error);
+                    res.redirect("/");
+                    return;
+                }
+
+                console.log(result);
+                console.log("FOLLLLLOWED");
+            });
+            res.redirect(link);
+        }
+    };
+
+    const displayFollowedPosts = (req, res) => {
+        console.log("-----------");
+        console.log(req.body.currentId);
+        console.log("-----------");
+
+        db.profile.viewFollowedPosts(req.body, (error, result) => {
             if (error) {
                 console.log("ERRRRROR AT QUERY FOR PROFILE DATA");
                 console.log(error);
-                res.redirect("/");
-                return;
-            } else if (result === null) {
-                res.redirect(link);
-                console.log("Result Nulll");
                 return;
             }
             console.log(result);
-            console.log("FOLLLLLOWED");
-            res.redirect(link);
+            console.log("RESULT OF FOLLOWED POSTS");
+            const data = {
+                result,
+            };
+            res.render("followed-posts", data);
         });
     };
+
     /**
      * ===========================================
      * Export controller functions as a module
@@ -58,5 +113,6 @@ module.exports = (db) => {
     return {
         profilePage: profilePage,
         followUser: followUser,
+        displayFollowedPosts: displayFollowedPosts,
     };
 };

@@ -7,9 +7,9 @@ followButt.forEach((buttonClick) => {
 });
 
 function toggleFunction() {
-    if (this.innerHTML === "Follow") {
-        this.innerHTML = "Unfollow";
-    } else if (this.innerHTML === "Unfollow") {
-        this.innerHTML = "Follow";
+    if (this.value === "Follow") {
+        this.value = "Unfollow";
+    } else if (this.value === "Unfollow") {
+        this.value = "Follow";
     }
 }

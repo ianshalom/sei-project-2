@@ -64,7 +64,7 @@ body {
 /* ++++++++++++++++++++ POSTS +++++++++++++++++++++++++*/
 .posts {
 	width: 70%;
-	height: 800px;
+	height: 700px;
 	overflow: hidden;
 	overflow-y: scroll;
 }
@@ -105,9 +105,10 @@ img.profile-img-sm {
 
 /* ++++++++++++++++++++ TESTIMONIES +++++++++++++++++++++++++*/
 .testimonies {
-	background-color: green;
+	background-color: black;
+	color: white;
 	width: 30%;
-	height: 500px;
+	height: 550px;
 	margin-top: 80px;
 	border-radius: 25px;
 }
@@ -394,12 +395,21 @@ img.profile-picture {
 	border-radius: 25px;
 }
 
-/* ++++++++++++++++++++ HOME PAGE +++++++++++++++++++++++++*/
+/* ++++++++++++++++++++ Followed POSTS +++++++++++++++++++++++++*/
+
+.followed-posts {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: url("./img/background-followed-posts.jpg") no-repeat center center
+		fixed;
+}
 
 /*
 	Photo by Anthony DELANOIX on Unsplash background-signup.jpg
 	Photo by André Filipe on Unsplash background-login.jpg
 	Photo by Thomas Tucker on Unsplash background-experiences.jpg
 	Photo by Arnaud STECKLE on Unsplash background-profile.jpg
+	Photo by Sven Scheuermeier on Unsplash
 
 */

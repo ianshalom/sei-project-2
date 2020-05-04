@@ -2,10 +2,13 @@ var React = require("react");
 
 class Profile extends React.Component {
     render() {
-        let profileData = this.props.result;
+        let profileData = this.props.result || [];
+
         let userPost;
         let currentIdUser = parseInt(this.props.idOfCurrentUser);
         console.log(currentIdUser);
+        let followStatus = this.props.followStatus;
+
         let profileDataContainer;
         let displayFollowButton;
 
@@ -31,6 +34,30 @@ class Profile extends React.Component {
                         />
                     </p>
                 );
+
+                profileDataContainer = (
+                    <div className="profile-data">
+                        <img
+                            className="profile-picture"
+                            src={data.profile_img}
+                        />
+
+                        <h1 className="profile-name">{data.name}</h1>
+
+                        <form method="POST" action="/followed-posts">
+                            <input
+                                type="hidden"
+                                name="currentId"
+                                value={currentIdUser}
+                            />
+                            <input
+                                className="followed-posts-button"
+                                type="submit"
+                                value="Posts by people you follow."
+                            />
+                        </form>
+                    </div>
+                );
             } else {
                 displayFollowButton = (
                     <p>
@@ -38,38 +65,45 @@ class Profile extends React.Component {
                             type="submit"
                             id="follow-butt"
                             className="follow-button"
-                            value="Follow"
+                            value={followStatus}
                         />
                     </p>
                 );
+                profileDataContainer = (
+                    <div className="profile-data">
+                        <img
+                            className="profile-picture"
+                            src={data.profile_img}
+                        />
+
+                        <h1 className="profile-name">{data.name}</h1>
+
+                        <form method="POST" action="/follow">
+                            <input
+                                type="hidden"
+                                name="following"
+                                value={currentIdUser}
+                            />
+                            <input
+                                type="hidden"
+                                name="followed"
+                                value={data.user_id}
+                            />
+                            <input
+                                type="hidden"
+                                name="postId"
+                                value={data.post_id}
+                            />
+                            <input
+                                type="hidden"
+                                name="followStatus"
+                                value={followStatus}
+                            />
+                            {displayFollowButton}
+                        </form>
+                    </div>
+                );
             }
-
-            profileDataContainer = (
-                <div className="profile-data">
-                    <img className="profile-picture" src={data.profile_img} />
-
-                    <h1 className="profile-name">{data.name}</h1>
-
-                    <form method="POST" action="/follow">
-                        <input
-                            type="hidden"
-                            name="following"
-                            value={currentIdUser}
-                        />
-                        <input
-                            type="hidden"
-                            name="followed"
-                            value={data.user_id}
-                        />
-                        <input
-                            type="hidden"
-                            name="postId"
-                            value={data.post_id}
-                        />
-                        {displayFollowButton}
-                    </form>
-                </div>
-            );
         });
 
         return (

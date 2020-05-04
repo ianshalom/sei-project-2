@@ -37,7 +37,10 @@ module.exports = (app, allModels) => {
     app.get("/profile/:id", profileControllerCallbacks.profilePage);
 
     app.post("/follow", profileControllerCallbacks.followUser);
-
+    app.post(
+        "/followed-posts",
+        profileControllerCallbacks.displayFollowedPosts
+    );
     app.post(
         "/signupUser",
         upload.single("myFile"),
