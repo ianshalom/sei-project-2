@@ -1,0 +1,405 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* ++++++++++++++++++++ HOME PAGE +++++++++++++++++++++++++*/
+.home-container {
+	max-width: 1200px;
+	margin: 30px auto;
+	text-align: center;
+}
+.bottom-container {
+	display: flex;
+}
+
+.navbar {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+
+.header {
+	font-size: 40px;
+}
+
+.nav-item a {
+	padding-right: 30px;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.background-image-container {
+	display: block;
+	margin-top: 20px;
+	font-family: "Cormorant Garamond", serif;
+	color: white;
+	text-align: center;
+	position: relative;
+	background-image: -webkit-linear-gradient(
+			rgba(48, 71, 94, 0.3),
+			rgba(32, 32, 64, 0.3)
+		),
+		url("/img/background-header.jpg");
+	background-image: -o-linear-gradient(
+			rgba(48, 71, 94, 0.3),
+			rgba(32, 32, 64, 0.3)
+		),
+		url("/img/background-header.jpg");
+	background-image: linear-gradient(
+			rgba(48, 71, 94, 0.3),
+			rgba(32, 32, 64, 0.3)
+		),
+		url("/img/background-header.jpg");
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+
+	opacity: 0.8;
+	width: 100%;
+	height: 80vh;
+}
+
+/* ++++++++++++++++++++ POSTS +++++++++++++++++++++++++*/
+.posts {
+	width: 70%;
+	height: 800px;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.post-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	margin-bottom: 30px;
+	height: 250px;
+	border-radius: 25px;
+	background-color: blue;
+}
+
+.description-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: left;
+}
+
+img.profile-img-sm {
+	height: 40px;
+	width: 40px;
+	border-radius: 100px;
+	margin-right: 20px;
+}
+
+.image-container img {
+	height: 250px;
+	width: 300px;
+	border-radius: 25px;
+}
+
+.mini-data {
+	display: flex;
+}
+
+/* ++++++++++++++++++++ TESTIMONIES +++++++++++++++++++++++++*/
+.testimonies {
+	background-color: green;
+	width: 30%;
+	height: 500px;
+	margin-top: 80px;
+	border-radius: 25px;
+}
+
+/* ++++++++++++++++++++ Sign Up +++++++++++++++++++++++++*/
+.signup-page {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: url("./img/background-signup.jpg") no-repeat center center fixed;
+}
+
+.signup-box {
+	width: 300px;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #a4c5c6;
+	text-align: center;
+	border-radius: 20px;
+	opacity: 0.96;
+}
+
+.signup-box input[type="text"],
+.signup-box input[type="password"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+
+.signup-box input[type="submit"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.signup-box input[type="file"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.signup-box input[type="file"]:hover {
+	background: #588da8;
+}
+
+.signup-box input[type="submit"]:hover {
+	background: #588da8;
+}
+
+/* ++++++++++++++++++++ Login +++++++++++++++++++++++++*/
+.login-page {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: url("./img/background-login.jpg") no-repeat center center fixed;
+}
+
+.login-box {
+	width: 300px;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #a4c5c6;
+	text-align: center;
+	border-radius: 20px;
+	opacity: 0.96;
+}
+
+.login-box h1 {
+	color: white;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+.login-box input[type="text"]:focus,
+.login-box input[type="password"]:focus {
+	width: 280px;
+	border-color: #ffe8df;
+}
+
+.login-box input[type="submit"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.login-box input[type="submit"]:hover {
+	background: #588da8;
+}
+
+/* ++++++++++++++++++++ EXPERIENCES FORM +++++++++++++++++++++++++*/
+.experiences-page {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: url("./img/background-experiences.jpg") no-repeat center center
+		fixed;
+}
+
+.experiences-box {
+	width: 300px;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #a4c5c6;
+	text-align: center;
+	border-radius: 20px;
+	opacity: 0.96;
+}
+
+.experiences-box h1 {
+	color: white;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.experiences-box input[type="text"],
+.experiences-box textarea[type="text"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+.experiences-box input[type="text"]:focus,
+.experiences-box input[type="password"]:focus {
+	width: 280px;
+	border-color: #ffe8df;
+}
+
+.experiences-box input[type="submit"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.experiences-box input[type="file"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #ffffff;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.experiences-box input[type="file"]:hover {
+	background: #588da8;
+}
+
+.experiences-box input[type="submit"]:hover {
+	background: #588da8;
+}
+
+/* ++++++++++++++++++++ Profile +++++++++++++++++++++++++*/
+.profile-page {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: url("./img/background-profile.jpg") no-repeat center center fixed;
+}
+
+.profile-container {
+	height: 85vh;
+	width: 85%;
+	margin: 0 auto;
+	display: flex;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.profile-data {
+	background-color: blue;
+	width: 35%;
+	text-align: center;
+}
+
+.user-post {
+	background-color: red;
+	width: 65%;
+}
+
+img.profile-picture {
+	height: 350px;
+	width: 70%;
+	margin-top: 40px;
+	border-radius: 25px;
+}
+
+.profile-content {
+	text-align: center;
+	padding: 30px;
+}
+
+.travel-img {
+	height: 300px;
+	width: 400px;
+	border-radius: 25px;
+}
+
+/* ++++++++++++++++++++ HOME PAGE +++++++++++++++++++++++++*/
+
+/*
+	Photo by Anthony DELANOIX on Unsplash background-signup.jpg
+	Photo by André Filipe on Unsplash background-login.jpg
+	Photo by Thomas Tucker on Unsplash background-experiences.jpg
+	Photo by Arnaud STECKLE on Unsplash background-profile.jpg
+
+*/

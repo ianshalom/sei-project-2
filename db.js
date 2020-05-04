@@ -10,44 +10,44 @@
  * ===================================================
  */
 
-
-
-const pg = require('pg');
-const url = require('url');
+const pg = require("pg");
+const url = require("url");
+var cloudinary = require("cloudinary").v2;
+cloudinary.config({
+    cloudinary_url: process.env.CLOUDINARY_URL,
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 var configs;
 
-if( process.env.DATABASE_URL ){
+if (process.env.DATABASE_URL) {
+    const params = url.parse(process.env.DATABASE_URL);
+    const auth = params.auth.split(":");
 
-  const params = url.parse(process.env.DATABASE_URL);
-  const auth = params.auth.split(':');
-
-  configs = {
-    user: auth[0],
-    password: auth[1],
-    host: params.hostname,
-    port: params.port,
-    database: params.pathname.split('/')[1],
-    ssl: true
-  };
-
-}else{
-  configs = {
-    user: 'akira',
-    host: '127.0.0.1',
-    database: 'testdb',
-    port: 5432
-  };
+    configs = {
+        user: auth[0],
+        password: auth[1],
+        host: params.hostname,
+        port: params.port,
+        database: params.pathname.split("/")[1],
+        ssl: true,
+    };
+} else {
+    configs = {
+        user: "ianfoo",
+        host: "127.0.0.1",
+        database: "project-2",
+        port: 5432,
+    };
 }
-
 
 const pool = new pg.Pool(configs);
 
-pool.on('error', function (err) {
-  console.log('idle client error', err.message, err.stack);
+pool.on("error", function (err) {
+    console.log("idle client error", err.message, err.stack);
 });
-
-
 
 /*
  * ===================================================
@@ -61,12 +61,14 @@ pool.on('error', function (err) {
  * ===================================================
  */
 
+const allPokemonModelsFunction = require("./models/pokemon");
 
-const allPokemonModelsFunction = require('./models/pokemon');
-
-const pokemonModelsObject = allPokemonModelsFunction( pool );
-
-
+const pokemonModelsObject = allPokemonModelsFunction(pool);
+const signupModelsObject = require("./models/signup")(pool);
+const loginModelsObject = require("./models/login")(pool);
+const experiencesModelsObject = require("./models/experiences")(pool);
+const homeModelsObject = require("./models/home")(pool);
+const profileModelsObject = require("./models/profile")(pool);
 
 /*
  * ===================================================
@@ -80,20 +82,24 @@ const pokemonModelsObject = allPokemonModelsFunction( pool );
  * ===================================================
  */
 
-
 module.exports = {
-  //make queries directly from here
-  queryInterface: (text, params, callback) => {
-    return pool.query(text, params, callback);
-  },
+    //make queries directly from here
+    queryInterface: (text, params, callback) => {
+        return pool.query(text, params, callback);
+    },
 
-  // get a reference to end the connection pool at server end
-  pool:pool,
+    // get a reference to end the connection pool at server end
+    pool: pool,
 
-  /*
-   * ADD APP MODELS HERE
-   */
+    /*
+     * ADD APP MODELS HERE
+     */
 
-  // users: userModelsObject,
-  pokemon: pokemonModelsObject
+    // users: userModelsObject,
+    pokemon: pokemonModelsObject,
+    signup: signupModelsObject,
+    login: loginModelsObject,
+    experiences: experiencesModelsObject,
+    homeDisplay: homeModelsObject,
+    profile: profileModelsObject,
 };
