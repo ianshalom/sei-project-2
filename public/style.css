@@ -130,7 +130,7 @@ body {
 	justify-content: space-between;
 	padding: 10px;
 	margin-bottom: 30px;
-	height: 250px;
+	height: 350px;
 	border-radius: 25px;
 }
 
@@ -197,6 +197,8 @@ img.profile-img-sm {
 	width: 300px;
 	border-radius: 25px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+	display: flex;
+	margin-top: 15px;
 }
 
 .mini-data {
@@ -579,6 +581,12 @@ img.profile-picture {
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 	text-overflow: ellipsis;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.profile-text-container .travel-description::-webkit-scrollbar {
+	width: 0 !important;
 }
 
 .profile-text-container .visited-country {
