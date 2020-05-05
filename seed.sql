@@ -1,0 +1,1 @@
+INSERT INTO users (name, password, profile_img)  VALUES('chloe', 'chloe', 'https://res.cloudinary.com/dwuwd2ksn/image/upload/v1588641696/chloe_ye7px0.jpg');
